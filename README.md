@@ -49,9 +49,10 @@ java -jar target/chat-server.jar
 том, была ли операция выполена успешно.
 
 После открытия соединения клиент отправляет один из трёх типов сообщений:
-* type: ClientMessage.MessageType.AUTH - если пользователь указал логин и пароль;
-* type: ClientMessage.MessageType.REGISTER - если это новый пользователь;
-* type: ClientMessage.MessageType.RECONNECT - если клиент сохранил токен до этого и токен пока ещё не просрочен.
+* type: [ClientMessage.MessageType.AUTH](#clientmessagemessagetypeauth) - если пользователь указал логин и пароль;
+* type: [ClientMessage.MessageType.REGISTER](#clientmessagemessagetyperegister) - если это новый пользователь;
+* type: [ClientMessage.MessageType.RECONNECT](#clientmessagemessagetypevalidate_token-тестовый-клиент-не-умеет)
+- если клиент сохранил токен до этого и токен пока ещё не просрочен.
 
 В ответ клиент получает одно из трёх типов сообщений:
 * type: ServerMessage.MessageType.AUTH;
@@ -62,11 +63,11 @@ java -jar target/chat-server.jar
 
 После получения токена клиент может отправлять запросы типов:
 * type: ClientMessage.MessageType.REGENERATE_TOKEN - для пересоздания токена, если срок его действия приближается к концу;
-* type: ClientMessage.MessageType.USER_LIST - запрос на получение списка пользователей;
-* type: ClientMessage.MessageType.SEND_MESSAGE - запрос на отправку сообщения в общий или приватный чат;
-* type: ClientMessage.MessageType.UPDATE_MESSAGE - запрос на изменение текста сообщения;
-* type: ClientMessage.MessageType.DELETE_MESSAGE - запрос на удаление сообщения;
-* type: ClientMessage.MessageType.LIST_MESSAGES - запрос на получение списка сообщений в каком-либо чате.
+* type: [ClientMessage.MessageType.USER_LIST](#clientmessagemessagetypeuser_list) - запрос на получение списка пользователей;
+* type: [ClientMessage.MessageType.SEND_MESSAGE](#clientmessagemessagetypesend_message) - запрос на отправку сообщения в общий или приватный чат;
+* type: [ClientMessage.MessageType.UPDATE_MESSAGE](#clientmessagemessagetypeupdate_message-не-имплементировано-в-тестовом-клиенте) - запрос на изменение текста сообщения;
+* type: [ClientMessage.MessageType.DELETE_MESSAGE](#clientmessagemessagetypedelete_message-не-имплементировано-в-тестовом-клиенте) - запрос на удаление сообщения;
+* type: [ClientMessage.MessageType.LIST_MESSAGES](#clientmessagemessagetypelist_messages) - запрос на получение списка сообщений в каком-либо чате.
 
 В ответ на запросы клиента сервер отвечает сообщениями типов:
 * type: ServerMessage.MessageType.REGENERATE_TOKEN;
@@ -124,6 +125,16 @@ ServerMessage.MessageType.NEW_USER, в поле data которого придё
 Если пользователь успешно обновил токен, всем активным в данный момент пользователям разошлётся сообщение типа
 ServerMessage.MessageType.USER_STATUS_CHANGE, в поле data которого придёт сообщение типа UserStatusChangeMessage
 с указанием айди пользователя и его текущего онлайн статуса.
+
+##### ClientMessage.MessageType.REGENERATE_TOKEN (тестовый клиент не умеет)
+
+В поле data клиент записывает сообщение типа RegenerateTokenMessage (auth_request.proto), в котором указывает свой
+текущий токен в ответ, если все хорошо с сервера придет сообщение ServerMessage.MessageType.REGENERATE_TOKEN в поле
+success будет true, а в поле data будет записано сообщение RegenerateToken (auth_response.proto) содержащее новый
+токен пользователя.
+
+Если был указан неверный токен или он уже просрочен в ответе от сервера в поле success придёт false а в поле data
+придёт сообщение типа Error (error_info.proto) с описанием ошибки.
 
 ##### ClientMessage.MessageType.USER_LIST
 
