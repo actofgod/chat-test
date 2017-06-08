@@ -62,7 +62,7 @@ java -jar target/chat-server.jar
 Если клиент отправил валидные данные в ответ он получит токен.
 
 После получения токена клиент может отправлять запросы типов:
-* type: ClientMessage.MessageType.REGENERATE_TOKEN - для пересоздания токена, если срок его действия приближается к концу;
+* type: [ClientMessage.MessageType.REGENERATE_TOKEN](#clientmessagemessagetyperegenerate_token-тестовый-клиент-не-умеет) - для пересоздания токена, если срок его действия приближается к концу;
 * type: [ClientMessage.MessageType.USER_LIST](#clientmessagemessagetypeuser_list) - запрос на получение списка пользователей;
 * type: [ClientMessage.MessageType.SEND_MESSAGE](#clientmessagemessagetypesend_message) - запрос на отправку сообщения в общий или приватный чат;
 * type: [ClientMessage.MessageType.UPDATE_MESSAGE](#clientmessagemessagetypeupdate_message-не-имплементировано-в-тестовом-клиенте) - запрос на изменение текста сообщения;
@@ -78,10 +78,10 @@ java -jar target/chat-server.jar
 * type: ServerMessage.MessageType.LIST_MESSAGES.
 
 Кроме того от сервера в процессе работы могут асинронно прилетать соощения типов:
-* type: ServerMessage.MessageType.USER_STATUS_CHANGE - изменился онлайн статус одного из пользователей;
-* type: ServerMessage.MessageType.NEW_USER - зарегестровался новый пользователь;
-* type: ServerMessage.MessageType.NEW_MESSAGE - появилось новое сообщение (в общем чате или в приватном);
-* type: ServerMessage.MessageType.UPDATED_MESSAGE - одно из сообщений изменилось (в общем чате или в приватном).
+* type: [ServerMessage.MessageType.USER_STATUS_CHANGE](#clientmessagemessagetypeauth) - изменился онлайн статус одного из пользователей;
+* type: [ServerMessage.MessageType.NEW_USER](#clientmessagemessagetyperegister) - зарегестровался новый пользователь;
+* type: [ServerMessage.MessageType.NEW_MESSAGE](#clientmessagemessagetypesend_message) - появилось новое сообщение (в общем чате или в приватном);
+* type: [ServerMessage.MessageType.UPDATED_MESSAGE](#clientmessagemessagetypeupdate_message-не-имплементировано-в-тестовом-клиенте) - одно из сообщений изменилось (в общем чате или в приватном).
 
 #### Сообщения, отправляемые с клиента:
 
