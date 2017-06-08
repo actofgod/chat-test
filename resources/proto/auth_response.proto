@@ -1,0 +1,31 @@
+
+syntax = "proto3";
+
+package wg_test;
+
+option java_package = "wg_test.chat.proto";
+
+message AuthMessage {
+    string token = 1;
+    int64 validBefore = 2;
+    int32 userId = 3;
+}
+
+message RegisterMessage {
+    string token = 1;
+    int64 validBefore = 2;
+    int32 userId = 3;
+}
+
+message CheckUserNameMessage {
+    bool valid = 1;
+    string message = 2;
+}
+
+message ReconnectMessage {
+    string token = 1;
+}
+
+message RegenerateToken {
+    string token = 1;
+}

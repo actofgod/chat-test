@@ -1,0 +1,20 @@
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <entry key="hostname">127.0.0.1</entry>
+    <entry key="port">11235</entry>
+    <entry key="workersCount">5</entry>
+    <entry key="passwordAlgorithm">SHA-256</entry>
+    <entry key="passwordSaltLength">16</entry>
+
+    <entry key="db.driver">postgresql</entry>
+    <entry key="db.driverName">org.postgresql.Driver</entry>
+    <entry key="db.hostname">localhost</entry>
+    <entry key="db.port">5432</entry>
+    <entry key="db.database">chat</entry>
+    <entry key="db.username">chat</entry>
+    <entry key="db.password">secret-password</entry>
+
+    <entry key="redis.hostname">localhost</entry>
+    <entry key="redis.port">6379</entry>
+    <entry key="redis.database">0</entry>
+</properties>

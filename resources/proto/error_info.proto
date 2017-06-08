@@ -1,0 +1,11 @@
+
+syntax = "proto3";
+
+package wg_test;
+
+option java_package = "wg_test.chat.proto";
+
+message Error {
+    int32 code = 1;
+    string reason = 2;
+}

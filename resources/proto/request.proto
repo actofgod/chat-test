@@ -1,0 +1,28 @@
+
+syntax = "proto3";
+
+package wg_test;
+
+option java_package = "wg_test.chat.proto";
+
+message ClientMessage {
+
+    enum MessageType {
+        AUTH = 0;
+        REGISTER = 1;
+        CHECK_USER_NAME = 2;
+        RECONNECT = 3;
+        REGENERATE_TOKEN = 4;
+
+        USER_LIST = 10;
+
+        SEND_MESSAGE = 20;
+        UPDATE_MESSAGE = 21;
+        DELETE_MESSAGE = 22;
+        LIST_MESSAGES = 23;
+    }
+
+    MessageType type = 1;
+    string token = 2;
+    bytes data = 3;
+}

@@ -1,0 +1,9 @@
+
+syntax = "proto3";
+
+package wg_test;
+
+option java_package = "wg_test.chat.proto";
+
+message ListMessage {
+}

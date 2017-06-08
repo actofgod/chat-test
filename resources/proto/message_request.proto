@@ -1,0 +1,27 @@
+
+syntax = "proto3";
+
+package wg_test;
+
+option java_package = "wg_test.chat.proto";
+
+message SendMessage {
+    int32 toId = 1;
+    string message = 2;
+}
+
+message UpdateMessage {
+    int32 messageId = 1;
+    int32 chatId = 2;
+    string message = 3;
+}
+
+message DeleteMessage {
+    int32 messageId = 1;
+    int32 chatId = 2;
+}
+
+message ListMessage {
+    int32 chatId = 1;
+    int64 horizon = 2;
+}

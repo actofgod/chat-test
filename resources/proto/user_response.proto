@@ -1,0 +1,21 @@
+
+syntax = "proto3";
+
+package wg_test;
+
+option java_package = "wg_test.chat.proto";
+
+message User {
+    int32 id = 1;
+    string username = 2;
+    bool online = 3;
+};
+
+message ListMessage {
+    repeated User users = 1;
+}
+
+message UserStatusChangeMessage {
+    int32 userId = 1;
+    bool online = 2;
+}

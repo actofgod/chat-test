@@ -1,0 +1,35 @@
+
+syntax = "proto3";
+
+package wg_test;
+
+option java_package = "wg_test.chat.proto";
+
+message SendMessage {
+    int32 messageId = 1;
+    int64 timeSend = 2;
+}
+
+message UpdateMessage {
+    int32 messageId = 1;
+    int64 lastUpdate = 2;
+}
+
+message DeleteMessage {
+    int32 messageId = 1;
+}
+
+message Message {
+    int32 messageId = 1;
+    int32 fromId = 2;
+    int32 toId = 3;
+    string message = 4;
+    int64 timeSend = 5;
+    int64 dateView = 6;
+    int64 lastUpdate = 7;
+};
+
+message ListMessage {
+    int32 chatId = 1;
+    repeated Message messages = 2;
+}
