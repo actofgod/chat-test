@@ -1,0 +1,5 @@
+
+.idea/*
+chat.iml
+target/*
+main/java/wg_test/chat/proto/*.java
